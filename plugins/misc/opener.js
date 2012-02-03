@@ -45,7 +45,7 @@ let INFO =
 
   function jump (url) {
     let index = 0;
-    let url = util.stringToURLArray(url).toString();
+    let url = dactyl.parseURLs(url).toString();
     if (url == buffer.URL){
       return false;
     }
@@ -94,7 +94,7 @@ let INFO =
           let [elem,] = args;
           let url = elem.href;
           if (!(url && jump(url))){
-            liberator.echo("Now Loading... " + url);
+            dactyl.echo("Now Loading... " + url);
             return next();
           }
         });
