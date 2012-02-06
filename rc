@@ -175,7 +175,7 @@ set showstatuslinks=command
 set strictfocus^=tao123.com:despotic
 
 "" set passkeys direct to webpage
-set passkeys=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt
+set passkeys+=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt
 
 "" }}}
 
