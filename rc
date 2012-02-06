@@ -9,16 +9,23 @@ nnoremap D d
 "nnoremap d :js config.removeTab(tabs.getTab())<CR>
 
 "" swap y/Y
-"nnoremap y Y
-"nnoremap Y y
+nnoremap y Y
+nnoremap Y y
 
 "" swap p/P
 nnoremap p P
 nnoremap P p
 
+"" swap f/F
+nnoremap f F
+nnoremap F f
+
 "" J/K move left/right
 "nnoremap J h
 "nnoremap K l
+
+"" map backspace to browse-backward
+nnoremap <BS> H
 
 "" h/l switch tabs
 nnoremap h <C-p>
@@ -28,7 +35,7 @@ nnoremap l <C-n>
 nnoremap e <C-^>
 
 "" <M-i> focus on input
-"nnoremap <M-i> gi
+nnoremap <M-i> gi
 
 "" U list closed tabs
 nnoremap U :undo<Space>
@@ -50,6 +57,19 @@ nnoremap ZM zm
 nnoremap ZO zo
 nnoremap ZR zr
 nnoremap zZ zz
+
+"" shortcut for google
+noremap <Leader>tm :tabopen https://mail.google.com<CR>
+noremap <Leader>td :tabopen https://docs.google.com<CR>
+noremap <Leader>tr :tabopen https://www.google.com/reader/<CR>
+noremap <Leader>tt :tabopen http://translate.google.com<CR>
+
+"" map for Ubiquity
+noremap <Leader>u <A-Space>
+
+"" change proxy
+nnoremap <Leader>g0 :set! network.proxy.type=0<CR>
+nnoremap <Leader>g1 :set! network.proxy.type=1<CR>
 
 "" open addons manager
 nnoremap <Leader>a :dialog addons<CR>
@@ -76,6 +96,11 @@ map -modes hints <C-f> -ex normal! <C-f>
 map -modes hints <C-b> -ex normal! <C-b>
 "map -modes hints gg    -ex normal! gg
 "map -modes hints G     -ex normal! G
+
+noremap <Leader><S-r>   :so! ~/.pentadactylrc<CR>
+noremap <C-Down>    :set guioptions=CBnTsrb<CR>
+noremap <C-Up>      :set guioptions=Cnrsb<CR>
+
 "" }}}
 
 "" {{{ Searching
@@ -103,7 +128,6 @@ silent bmark -tags searchengine -title='Shooter Subtitle Search' http://shooter.
 silent bmark -tags searchengine -title='Baidu Search' -charset=GB2312 http://www.baidu.com/s?wd=%s&rsv_bp=0&rsv_spt=3 -keyword b
 silent bmark -tags searchengine -title='KTXP Torrent Search' http://bt.ktxp.com/search.php?keyword=%s -keyword k
 silent bmark -tags searchengine -title='CHDBits Search' http://chdbits.org/torrents.php?incldead=1&spstate=0&inclbookmarked=0&search=%s&search_area=0&search_mode=0 -keyword c
-silent bmark -tags searchengine -title='Baidu MP3 Search' -charset=GB2312 http://mp3.baidu.com/m?f=ms&rf=idx&tn=baidump3&ct=134217728&lf=&rn=&word=%s&lm=-1 -keyword bm
 set defsearch=g
 "" }}}
 
@@ -116,19 +140,20 @@ set previouspattern^='[上前]一?[页张个篇章]','\bnewer\s*posts\b'
 
 "" do not display right scrollbar and commandline
 "set guioptions+=n
-set guioptions=sbn
+set guioptions=Csrbn
 
 "" open things at new tab
 set newtab=all
 
 "" only show the tab bar when there are multiple tabs
-set showtabline=multitab
+""set showtabline=multitab
+set showtabline=always
 
 "" highlight search
 set hlfind
 
 "" complete search engine suguest
-set complete=location,suggestion
+set complete=bookmark,location,suggestion
 
 "" pressing `,' is easier
 set mapleader=,
@@ -138,16 +163,20 @@ set popups=tab,resized
 
 "" home row as hintkeys
 "set hintkeys=asdfg;lkjh
-set hintkeys="4;/.123"
+set hintkeys="asdfghjklweruiozvbn"
 
 "" only follow hints when press enter
 set followhints=1
 
 "" show link when hover links
-"set showstatuslinks=command
+set showstatuslinks=command
 
 "" disable annoying auto focus
 set strictfocus^=tao123.com:despotic
+
+"" set passkeys direct to webpage
+set passkeys=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt
+
 "" }}}
 
 "" {{{ Command
@@ -198,20 +227,20 @@ command! cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
 "autocmd! LocationChange .* :set titlestring=<url>
 
 "" find duplicated tab
-group deduplicateTab
-autocmd! -javascript -group deduplicateTab PageLoad .* <<EOF
-var dtabs = [];
-tabs.allTabs.forEach(function (t, i) {
-    if (t.linkedBrowser.lastURI && doc.location == t.linkedBrowser.lastURI.spec && tab != i + 1) {
-        dtabs.push(i + 1);
-        config.removeTab(tabs.getTab(i));
-    }
-});
-if (dtabs.length > 0) {
-    dactyl.echo("Tab " + dtabs.join(",") + " duplicated");
-    dactyl.beep();
-}
-EOF
+"group deduplicateTa
+"autocmd! -javascript -group deduplicateTab PageLoad .* <<EOF
+"var dtabs = [];
+"tabs.allTabs.forEach(function (t, i) {
+"    if (t.linkedBrowser.lastURI && doc.location == t.linkedBrowser.lastURI.spec && tab != i + 1) {
+"        dtabs.push(i + 1);
+"        config.removeTab(tabs.getTab(i));
+"    }
+""});
+"if (dtabs.length > 0) {
+"    dactyl.echo("Tab " + dtabs.join(",") + " duplicated");
+"    dactyl.beep();
+"}
+"EOF
 "" }}}
 
 "" {{{ Style
@@ -240,14 +269,14 @@ set loadplugins='\.(css|js|penta)$'
 "" }}}
 
 "" {{{ Firefox Setting
-set! ui.caretWidth=5
-set! ui.caretBlinkTime=0
+set! ui.caretWidth=2
+set! ui.caretBlinkTime=500
 "" disable web page accesskey, this leads to key conflict
 set! ui.key.generalAccessKey=0
-set! browser.tabs.closeWindowWithLastTab=false
+set! browser.tabs.closeWindowWithLastTab=true
 set! browser.tabs.insertRelatedAfterCurrent=true
 set! network.dns.disableIPv6=true
-set! browser.startup.homepage="about:blank"
+set! browser.startup.homepage="http://www.google.com"
 set! browser.download.useDownloadDir=false
 set! browser.download.manager.showWhenStarting=false
 set! general.warnOnAboutConfig=false
@@ -262,7 +291,17 @@ set! nglayout.initialpaint.delay=0
 set! content.notify.interval=500000
 set! content.notify.ontimer=true
 set! content.switch.threshold=250000
-set! content.interrupt.parsing=false
+set! content.interrupt.parsing=true
+set! network.http.pipelining=true
+set! network.http.pipelining.maxrequests=16
+set! network.http.pipelining.ssl=true
+set! network.http.proxy.pipelining=true
+set! content.max.tokenizing.time=2250000
+set! content.notify.interval=750000
+set! content.notify.ontimer=true
+set! content.notify.backoffcount=5
+set! content.switch.threshold=750000
+"set! 
 "" disable addons compatibility check
 set! extensions.checkCompatibility.5.0=false
 set! extensions.checkCompatibility.6.0=false
