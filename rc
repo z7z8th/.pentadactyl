@@ -28,15 +28,11 @@ nnoremap F f
 nnoremap <BS> H
 
 "" w/e switch tabs
-nnoremap w <C-p>
-nnoremap e <C-n>
-
-"" back/forward
-nnoremap h <C-o>
-nnoremap l <C-i>
+nnoremap h <C-p>
+nnoremap l <C-n>
 
 "" prev selected tab
-nnoremap x <C-^>
+nnoremap e <C-^>
 
 "" <M-i> focus on input
 nnoremap <M-i> gi
@@ -346,4 +342,4 @@ set! extensions.tabgroupsmanager.dispGroupTabCount=false
 set! extensions.tabgroupsmanager.dispGroupTabIconReading=false
 "" }}}
 
-" vim: set ft=pentadactyl fdm=marker:
+" vim: set ft=vim fdm=marker:

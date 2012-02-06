@@ -41,7 +41,7 @@ let INFO =
  */
 
 (function () {
-  let U = liberator.plugins.libly.$U;
+  let U = dactyl.plugins.libly.$U;
 
   function jump (url) {
     let index = 0;
