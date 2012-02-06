@@ -27,12 +27,16 @@ nnoremap F f
 "" map backspace to browse-backward
 nnoremap <BS> H
 
-"" h/l switch tabs
-nnoremap h <C-p>
-nnoremap l <C-n>
+"" w/e switch tabs
+nnoremap w <C-p>
+nnoremap e <C-n>
+
+"" back/forward
+nnoremap h <C-o>
+nnoremap l <C-i>
 
 "" prev selected tab
-nnoremap e <C-^>
+nnoremap x <C-^>
 
 "" <M-i> focus on input
 nnoremap <M-i> gi
@@ -128,6 +132,9 @@ silent bmark -tags searchengine -title='Shooter Subtitle Search' http://shooter.
 silent bmark -tags searchengine -title='Baidu Search' -charset=GB2312 http://www.baidu.com/s?wd=%s&rsv_bp=0&rsv_spt=3 -keyword b
 silent bmark -tags searchengine -title='KTXP Torrent Search' http://bt.ktxp.com/search.php?keyword=%s -keyword k
 silent bmark -tags searchengine -title='CHDBits Search' http://chdbits.org/torrents.php?incldead=1&spstate=0&inclbookmarked=0&search=%s&search_area=0&search_mode=0 -keyword c
+
+silent bmark -tags searchengine -title='Mobilism' http://forum.mobilism.org/search.php?keywords=%s&fid[]=398&sc=1&sr=topics&sf=titleonly -keyword mo
+
 set defsearch=g
 "" }}}
 
@@ -155,9 +162,6 @@ set hlfind
 "" complete search engine suguest
 set complete=bookmark,location,suggestion
 
-"" pressing `,' is easier
-set mapleader=,
-
 "" allow popups popup
 set popups=tab,resized
 
@@ -182,28 +186,41 @@ set passkeys=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,
 "" {{{ Command
 "" smart reload
 command! smartReload -js <<EOF
-if (buffer.URL.indexOf('#') >=0) {
-    dactyl.execute("reload")
+if (buffer.URL.spec.indexOf('#') >= 0) {
+    dactyl.execute("reload");
 } else {
-    dactyl.open(buffer.URL.spec)
+    dactyl.open(buffer.URL.spec);
 }
 EOF
 nnoremap r :smartReload<CR>
 
+command! smartReader -js <<EOF
+if (typeof FirefoxReader === "object") {
+    dactyl.execute("feedkeys <M-A-z>");
+} else if (typeof commands.get("readability") === "object") {
+    dactyl.execute("readability");
+} else {
+    dactyl.execute("bml-readability");
+}
+EOF
+nnoremap <Leader>r :smartReader<CR>
+
 "" flush browser dns
 command! flushdns set! network.dnsCacheExpiration=0 | set! network.dnsCacheExpiration&
 
-"" open current tab in google chrome
-command! gchrome -js <<EOF
-var url=window.content.location.href;
-if (url.indexOf("http://v.youku.com/v_show/") == 0) {
+"" open current tab conditionally
+command! smartOpen -js <<EOF
+var url = window.content.location.href;
+if (url.indexOf("http://v.youku.com/v_show/") === 0) {
     url = url.replace(/v_show/i, "v_showMini");
 }
 if (config.OS.isMacOSX) {
-    io.system("open -a 'Google Chrome' " + url);
+    io.system("open -a 'Safari' " + url);
+} else {
+    dactyl.execute("tabopen " + url);
 }
 EOF
-nnoremap gc :gchrome<CR>
+nnoremap ge :smartOpen<CR>
 
 "" kanged from https://github.com/blueyed/dotfiles/blob/master/pentadactylrc
 "" Open current location via Coral CDN
@@ -226,21 +243,13 @@ command! cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
 "" set title to url
 "autocmd! LocationChange .* :set titlestring=<url>
 
-"" find duplicated tab
-"group deduplicateTa
-"autocmd! -javascript -group deduplicateTab PageLoad .* <<EOF
-"var dtabs = [];
-"tabs.allTabs.forEach(function (t, i) {
-"    if (t.linkedBrowser.lastURI && doc.location == t.linkedBrowser.lastURI.spec && tab != i + 1) {
-"        dtabs.push(i + 1);
-"        config.removeTab(tabs.getTab(i));
-"    }
-""});
-"if (dtabs.length > 0) {
-"    dactyl.echo("Tab " + dtabs.join(",") + " duplicated");
-"    dactyl.beep();
-"}
-"EOF
+"" use google to get lwn subscription link
+autocmd! -javascript PageLoad 'https://lwn.net/Articles/*' <<EOF
+if (doc.title.match(/subscription/i)) {
+    var title = doc.getElementsByClassName("ArticleText")[0].getElementsByTagName("a")[0].innerHTML;
+    dactyl.open("g site:lwn.net/SubscriberLink " + title);
+}
+EOF
 "" }}}
 
 "" {{{ Style
@@ -250,7 +259,6 @@ colorscheme mybeta1
 
 "" {{{ Bookmarklet
 nnoremap <Leader>b :bml-
-nnoremap <Leader>r :bml-readability<CR>
 nnoremap <Leader>s :bml-subscribe<CR>
 command! bml-readable -description "Bookmarklet: Make webpage readable" open javascript:(function(){_readableOptions={'text_font':'Vollkorn','text_font_monospace':'quote(Courier%20New),%20Courier,%20monospace','text_font_header':'quote(Palatino%20Linotype),%20Palatino,%20quote(Book%20Antigua),%20Georgia,%20serif','text_size':'20px','text_line_height':'1.5','box_width':'35em','color_text':'#282828','color_background':'#E5DED6','color_links':'#EE4545','text_align':'normal','base':'blueprint','custom_css':''};if(document.getElementsByTagName('body').length>0);else{return;}if(window.$readable){if(window.$readable.bookmarkletTimer){return;}}else{window.$readable={};}window.$readable.bookmarkletTimer=true;window.$readable.options=_readableOptions;if(window.$readable.bookmarkletClicked){window.$readable.bookmarkletClicked();return;}_readableScript=document.createElement('script');_readableScript.setAttribute('src','http://readable-static.tastefulwords.com/target.js?rand='+encodeURIComponent(Math.random()));document.getElementsByTagName('body')[0].appendChild(_readableScript);})()
 command! bml-page2rss -description "Bookmarklet: Turn any page to RSS" open javascript:(function(){if(!window.page2rss_bookmark_urlr)window.page2rss_bookmark_urlr=function(ur){if(ur.error)alert(ur.error);if(ur.page&&ur.page.page)location.href=ur.page.page};var%20r=document.getElementById('urlFormRequest');if(r)r.parentNode.removeChild(r);r=document.createElement('script');r.id='urlFormRequest';r.type='text/javascript';r.src='http://page2rss.com/api/page?url='+encodeURIComponent(location.href)+'&callback=page2rss_bookmark_urlr';document.body.appendChild(r);})();
@@ -279,6 +287,7 @@ set! network.dns.disableIPv6=true
 set! browser.startup.homepage="http://www.google.com"
 set! browser.download.useDownloadDir=false
 set! browser.download.manager.showWhenStarting=false
+set! browser.download.manager.showAlertOnComplete=true
 set! general.warnOnAboutConfig=false
 set! intl.accept_languages="en-us,en,zh-cn,zh"
 set! view_source.wrap_long_lines=true
@@ -303,27 +312,38 @@ set! content.notify.backoffcount=5
 set! content.switch.threshold=750000
 "set! 
 "" disable addons compatibility check
-set! extensions.checkCompatibility.5.0=false
-set! extensions.checkCompatibility.6.0=false
-set! extensions.checkCompatibility.7.0=false
-set! extensions.checkCompatibility.8.0=false
 set! extensions.checkCompatibility.9.0=false
 set! extensions.checkCompatibility.10.0=false
 "" disable the install-dialog delay
 set! security.dialog_enable_delay=0
-set! extensions.adblockplus.frameobjects=false
-set! extensions.adblockplus.showinstatusbar=true
-set! extensions.adblockplus.showintoolbar=false
-set! extensions.httpfox.AlwaysOpenDetached=true
-set! extensions.verticaltabs.width=260
-set! extensions.flashresizer.color="#999999"
-set! extensions.flashresizer.width=1
-set! extensions.tabgroupsmanager.groupBarPosition=2
-set! extensions.tabgroupsmanager.dispGroupTabCount=false
-set! extensions.tabgroupsmanager.dispGroupTabIconReading=false
 if config.OS.isMacOSX
 set! font.name.monospace.x-western="Menlo"
 end
+if config.OS.isWindows
+set! font.name.monospace.zh-CN="Consolas"
+set! font.name.sans-serif.zh-CN="微软雅黑"
+set! font.name.serif.zh-CN="微软雅黑"
+end
+"" }}}
+
+"" {{{ Extension
+"" reader
+set! extensions.firefoxreader.currentbackgroundcolor="#E5DED6"
+set! extensions.firefoxreader.currentfontsize="22"
+set! extensions.firefoxreader.customfirefoxreaderkeyboardshortcut="z"
+
+"" adblock plus
+set! extensions.adblockplus.frameobjects=false
+set! extensions.adblockplus.showinstatusbar=true
+set! extensions.adblockplus.showintoolbar=false
+
+"" vertical tabs
+set! extensions.verticaltabs.width=260
+
+"" tabgroups manager
+set! extensions.tabgroupsmanager.groupBarPosition=2
+set! extensions.tabgroupsmanager.dispGroupTabCount=false
+set! extensions.tabgroupsmanager.dispGroupTabIconReading=false
 "" }}}
 
 " vim: set ft=pentadactyl fdm=marker:
