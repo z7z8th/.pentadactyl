@@ -16,5 +16,5 @@ EOF
 
 group default -locations mail.google.com
 
-set passkeys+=mail.google.com:'cb/ukjxsym!#pnrRaAfFq,<Esc>N][}{z.IU_-?evlo+&`~T',gi,gs,gt,gd,ga,gc,*a,*n,*r,*u,*s,*t,gk,gl
+set passkeys+=mail.google.com:'cb/ukjxsym!#pnrRaAfFq,<Esc>N][}{z.IU_-?evo+&`~T',gi,gs,gt,gd,ga,gc,*a,*n,*r,*u,*s,*t,gk,gl
 

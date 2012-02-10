@@ -1,4 +1,5 @@
 "" {{{ Mapping
+set mapleader=','
 "" scroll more
 nnoremap j 10j
 nnoremap k 10k
