@@ -1,5 +1,6 @@
 "" {{{ Mapping
 set mapleader=','
+
 "" scroll more
 nnoremap j 10j
 nnoremap k 10k
@@ -18,8 +19,8 @@ nnoremap p P
 nnoremap P p
 
 "" swap f/F
-nnoremap f F
-nnoremap F f
+"nnoremap f F
+"nnoremap F f
 
 "" J/K move left/right
 "nnoremap J h
@@ -102,6 +103,9 @@ noremap <Leader><S-r>   :so! ~/.pentadactylrc<CR>
 noremap <C-Down>    :set guioptions=CBnTsrb<CR>
 noremap <C-Up>      :set guioptions=Cnrsb<CR>
 
+"" <C-Q> quit the brower, hack it to :help
+noremap <C-Q>	:help<CR>
+
 "" }}}
 
 "" {{{ Searching
@@ -122,7 +126,7 @@ silent bmark -tags searchengine -title='Google Code Search' http://google.com/co
 silent bmark -tags searchengine -title='Wikipedia Search' http://en.wikipedia.org/wiki/Special:Search?search=%s -keyword w
 silent bmark -tags searchengine -title='Twitter Search' https://twitter.com/search/%s -keyword t
 silent bmark -tags searchengine -title='Debian Package Search' http://packages.debian.org/search?keywords=%s -keyword d
-silent bmark -tags searchengine -title='Debian File Search' http://packages.debian.org/search?searchon=contents&mode=filename&keywords=%s -keyword df
+silent bmark -tags searchengine -title='Debian File Search' http://packages.debian.org/search?searchon=contents&mode=exactfilename&keywords=%s -keyword df
 silent bmark -tags searchengine -title='Mtime Movie Search' http://search.mtime.com/search/?%s -keyword m
 silent bmark -tags searchengine -title='Douban Movie Search' http://movie.douban.com/subject_search?search_text=%s&cat=1002 -keyword dm
 silent bmark -tags searchengine -title='Shooter Subtitle Search' http://shooter.cn/search/%s -keyword s
@@ -191,16 +195,6 @@ if (buffer.URL.spec.indexOf('#') >= 0) {
 EOF
 nnoremap r :smartReload<CR>
 
-command! smartReader -js <<EOF
-if (typeof FirefoxReader === "object") {
-    dactyl.execute("feedkeys <M-A-z>");
-} else if (typeof commands.get("readability") === "object") {
-    dactyl.execute("readability");
-} else {
-    dactyl.execute("bml-readability");
-}
-EOF
-nnoremap <Leader>r :smartReader<CR>
 
 "" flush browser dns
 command! flushdns set! network.dnsCacheExpiration=0 | set! network.dnsCacheExpiration&
@@ -324,15 +318,6 @@ end
 "" }}}
 
 "" {{{ Extension
-"" reader
-set! extensions.firefoxreader.currentbackgroundcolor="#E5DED6"
-set! extensions.firefoxreader.currentfontsize="22"
-set! extensions.firefoxreader.customfirefoxreaderkeyboardshortcut="z"
-
-"" adblock plus
-set! extensions.adblockplus.frameobjects=false
-set! extensions.adblockplus.showinstatusbar=true
-set! extensions.adblockplus.showintoolbar=false
 
 "" vertical tabs
 set! extensions.verticaltabs.width=260
