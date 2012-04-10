@@ -1,0 +1,4 @@
+set passkeys+=www.douban.com:'<Left><Right>'
+set passkeys+=alphatown.com:'<Left><Right><Up><Douban>wasd'
+set passkeys+=groups.google.com:'ojJkKnNpPu<Space><PageDown><S-Space><PageUp><Up><Down><Home><End>hfAacs?',gl,gm,gs
+set passkeys+=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt

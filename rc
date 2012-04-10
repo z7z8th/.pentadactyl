@@ -61,10 +61,16 @@ nmap -builtin ZR zr
 nmap -builtin zZ zz
 
 "" shortcut for google
-map -builtin <Leader>tm :tabopen https://mail.google.com<CR>
-map -builtin <Leader>td :tabopen https://docs.google.com<CR>
-map -builtin <Leader>tr :tabopen https://www.google.com/reader/<CR>
-map -builtin <Leader>tt :tabopen http://translate.google.com<CR>
+map -builtin <Leader>tm  :tabopen https://mail.google.com<CR>
+map -builtin <Leader>td2 :tabopen https://docs.google.com<CR>
+map -builtin <Leader>tr  :tabopen https://www.google.com/reader<CR>
+map -builtin <Leader>tt  :tabopen http://translate.google.com<CR>
+map -builtin <Leader>td1 :tabopen http://www.douban.com<CR>
+map -builtin <Leader>tf  :tabopen http://douban.fm<CR>
+map -builtin <Leader>tq  :tabopen http://qzone.qq.com<CR>
+map -builtin <Leader>tx  :tabopen http://www.renren.com<CR>
+map -builtin <Leader>tg  :tabopen https://groups.google.com<CR>
+
 
 "" map for Ubiquity
 map -builtin <Leader>u <A-Space>
@@ -104,6 +110,12 @@ map -builtin <C-Up>      :set guioptions=Cnrsb<CR>
 
 "" <C-Q> quit the brower, hack it to :help
 map -builtin <C-Q>	:help<CR>
+
+"" move tab
+map -builtin cl  :tabmove! +1<CR>
+map -builtin ch  :tabmove! -1<CR>
+map -builtin <Leader>fd  :tabdetach<CR>
+map -builtin <Leader>fp  :pintab!<CR>
 
 "" }}}
 
@@ -179,7 +191,7 @@ set showstatuslinks=command
 set strictfocus^=tao123.com:despotic
 
 "" set passkeys direct to webpage
-set passkeys+=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt
+set passkeys+=
 
 "" }}}
 
@@ -218,7 +230,7 @@ nmap -builtin ge :smartOpen<CR>
 command! coralcdn -js dactyl.open( String.replace(buffer.URL, /(\.\w{2,4})\//, "$1.nyud.net/") )
 nmap -builtin gp :coralcdn<CR>
 
-command! gohttps -js window.content.location.href=window.content.location.href.replace(/^http/i, "https");
+command! gohttps -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 nmap -builtin gs :gohttps<CR>
 
 "" display calendar
@@ -228,7 +240,7 @@ command! cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
 "nmap -builtin p :js dactyl.execute(":tabopen " + dactyl.clipboardRead())<CR>
 
 "" use https for some sites
-autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader))' -js window.content.location.href=window.content.location.href.replace(/^http/i, "https");
+autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader))' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 
 "" set title to url
 "autocmd! LocationChange .* :set titlestring=<url>
