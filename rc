@@ -240,7 +240,7 @@ command! cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
 "nmap -builtin p :js dactyl.execute(":tabopen " + dactyl.clipboardRead())<CR>
 
 "" use https for some sites
-autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader))' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader)|webcache.googleusercontent.com)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 
 "" set title to url
 "autocmd! LocationChange .* :set titlestring=<url>
@@ -326,6 +326,8 @@ set! network.proxy.socks_port=8087
 "" disable addons compatibility check
 set! extensions.checkCompatibility.9.0=false
 set! extensions.checkCompatibility.10.0=false
+set! extensions.checkCompatibility.11.0=false
+set! extensions.checkCompatibility.12.0=false
 "" disable the install-dialog delay
 set! security.dialog_enable_delay=0
 if config.OS.isMacOSX
