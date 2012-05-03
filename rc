@@ -314,6 +314,16 @@ set! content.notify.interval=750000
 set! content.notify.ontimer=true
 set! content.notify.backoffcount=5
 set! content.switch.threshold=750000
+set! network.proxy.share_proxy_settings=false
+set! network.proxy.http=127.0.0.1
+set! network.proxy.http_port=8087
+set! network.proxy.ftp=127.0.0.1
+set! network.proxy.ftp_port=8087
+set! network.proxy.ssl=127.0.0.1
+set! network.proxy.ssl_port=8087
+set! network.proxy.socks=127.0.0.1
+set! network.proxy.socks_port=8087
+
 "set! 
 "" disable addons compatibility check
 set! extensions.checkCompatibility.9.0=false
