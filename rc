@@ -240,7 +240,9 @@ command! cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
 "nmap -builtin p :js dactyl.execute(":tabopen " + dactyl.clipboardRead())<CR>
 
 "" use https for some sites
-autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader)|webcache.googleusercontent.com)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader))' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://(webcache.googleusercontent.com)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://developer.android.com/' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 
 "" set title to url
 "autocmd! LocationChange .* :set titlestring=<url>
