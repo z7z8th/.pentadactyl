@@ -1,4 +1,9 @@
 "" {{{ Search Engines
+command -nargs=* -complete=search search execute 'tabopen <args> ' + content.getSelection().toString()
+map s :search<Space>
+command -nargs=? -complete=search switchSearch execute 'open <args> ' + (buffer.lastInputField?buffer.lastInputField.value:'')
+map S gi<ESC> :switchSearch<Space>
+command! -nargs=* siteSearch execute "tabopen <args> site:" + window.content.location.hostname
 "" hide all browser search engines except google(for suggestion)
 js services.browserSearch.getEngines().forEach(function (e) {if(e.name!="Google") e.hidden = true})
 silent bmark -tags searchengine -title='Google SSL Search' https://www.google.com/search?q=%s&ion=0&lr=lang_zh-CN|lang_zh-TW|lang_en -keyword g
@@ -15,6 +20,8 @@ silent bmark -tags searchengine -title='KTXP Torrent Search' http://bt.ktxp.com/
 silent bmark -tags searchengine -title='CHDBits Search' http://chdbits.org/torrents.php?incldead=1&spstate=0&inclbookmarked=0&search=%s&search_area=0&search_mode=0 -keyword c
 silent bmark -tags searchengine -title='Baidu MP3 Search' -charset=GB2312 http://mp3.baidu.com/m?f=ms&rf=idx&tn=baidump3&ct=134217728&lf=&rn=&word=%s&lm=-1 -keyword bm
 silent bmark -tags searchengine -title='Mobilism' http://forum.mobilism.org/search.php?keywords=%s&fid[]=398&sc=1&sr=topics&sf=titleonly -keyword mo
+
+set defsearch=g
 "" }}}
 
 "" {{{ Firefox Setting
@@ -30,7 +37,7 @@ set! browser.download.useDownloadDir=false
 set! browser.download.manager.showWhenStarting=false
 set! browser.download.manager.showAlertOnComplete=true
 set! general.warnOnAboutConfig=false
-set! intl.accept_languages="en-us,en,zh-cn,zh"
+set! intl.accept_languages="en-us,en,zh-cn,zh,zh-tw,zh-hk"
 set! view_source.wrap_long_lines=true
 "" do not reload tabs when restarting firefox, see http://blog.zpao.com/post/1140456188/cascaded-session-restore-a-hidden-bonus
 set! browser.sessionstore.restore_on_demand=true
@@ -50,9 +57,9 @@ if config.OS.isMacOSX
 set! font.name.monospace.x-western="Menlo"
 end
 if config.OS.isWindows
-set! font.name.monospace.zh-CN="Consolas"
-set! font.name.sans-serif.zh-CN="微软雅黑"
-set! font.name.serif.zh-CN="微软雅黑"
+    set! font.name.monospace.zh-CN="Consolas"
+    set! font.name.sans-serif.zh-CN="微软雅黑"
+    set! font.name.serif.zh-CN="微软雅黑"
 end
 "" disable addons compatibility check
 js <<EOF
