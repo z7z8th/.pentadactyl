@@ -1,1 +1,1 @@
-set fbwhitelist=http://v.youku.com/v_showMini/*,douban.fm,http*.google.com,http*picnik.com,pixlr.com,infomax.com.tw,su.ganji.com,upload.renren.com,drive.google.com,g.top100.cn,www.google.cn,music.googleusercontent.cn,www.top100.cn
+set fbwhitelist=http://v.youku.com/v_showMini/*,douban.fm,http*.google.com,http*picnik.com,pixlr.com,infomax.com.tw,su.ganji.com,upload.renren.com,drive.google.com,github.com,www.top100.cn,g.top100.cn,www.google.cn,music.googleusercontent.cn
