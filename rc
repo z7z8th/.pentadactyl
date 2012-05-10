@@ -60,20 +60,27 @@ nmap -builtin ZO zo
 nmap -builtin ZR zr
 nmap -builtin zZ zz
 
+"" search shortcut
+command -nargs=* -complete=search search execute 'tabopen <args> ' + content.getSelection().toString()
+map s :search<Space>
+command -nargs=? -complete=search switchSearch execute 'open <args> ' + (buffer.lastInputField?buffer.lastInputField.value:'')
+map S gi<ESC> :switchSearch<Space>
+command! -nargs=* siteSearch execute "tabopen <args> site:" + window.content.location.hostname
+
 "" shortcut for google
-map -builtin <Leader>tm  :tabopen https://mail.google.com<CR>
-map -builtin <Leader>td2 :tabopen https://docs.google.com<CR>
-map -builtin <Leader>tr  :tabopen https://www.google.com/reader<CR>
-map -builtin <Leader>tt  :tabopen http://translate.google.com<CR>
-map -builtin <Leader>td1 :tabopen http://www.douban.com<CR>
-map -builtin <Leader>tf  :tabopen http://douban.fm<CR>
-map -builtin <Leader>tq  :tabopen http://qzone.qq.com<CR>
-map -builtin <Leader>tx  :tabopen http://www.renren.com<CR>
-map -builtin <Leader>tg  :tabopen https://groups.google.com<CR>
+map -builtin <Leader>gm  :tabopen https://mail.google.com<CR>
+map -builtin <Leader>gd2 :tabopen https://docs.google.com<CR>
+map -builtin <Leader>gr  :tabopen https://www.google.com/reader<CR>
+map -builtin <Leader>gt  :tabopen http://translate.google.com<CR>
+map -builtin <Leader>gd1 :tabopen http://www.douban.com<CR>
+map -builtin <Leader>gf  :tabopen http://douban.fm<CR>
+map -builtin <Leader>gq  :tabopen http://qzone.qq.com<CR>
+map -builtin <Leader>gx  :tabopen http://www.renren.com<CR>
+map -builtin <Leader>gg  :tabopen https://groups.google.com<CR>
 
 
-"" map for Ubiquity
-map -builtin <Leader>u <A-Space>
+"" map for Ubiquity, not used now, it's not compatible with dactyl
+"map -builtin <Leader>u <A-Space>
 
 "" change proxy
 nmap -builtin <Leader>g0 :set! network.proxy.type=0<CR>
@@ -128,7 +135,6 @@ map -builtin <Leader>fd  :tabdetach<CR>
 map -builtin <Leader>fp  :pintab!<CR>
 
 "" }}}
-
 
 "" {{{ Option
 "" ]]/[[ turn next/previous page
@@ -352,66 +358,6 @@ silent cd ~
 "" plugins
 set loadplugins='\.(css|js|penta)$'
 
-"" {{{ Firefox Setting
-set! ui.caretWidth=2
-set! ui.caretBlinkTime=500
-"" disable web page accesskey, this leads to key conflict
-set! ui.key.generalAccessKey=0
-set! browser.tabs.closeWindowWithLastTab=true
-set! browser.tabs.insertRelatedAfterCurrent=true
-set! network.dns.disableIPv6=true
-set! browser.startup.homepage="http://www.google.com"
-set! browser.download.useDownloadDir=false
-set! browser.download.manager.showWhenStarting=false
-set! browser.download.manager.showAlertOnComplete=true
-set! general.warnOnAboutConfig=false
-set! intl.accept_languages="en-us,en,zh-cn,zh"
-set! view_source.wrap_long_lines=true
-"" do not reload tabs when restarting firefox, see http://blog.zpao.com/post/1140456188/cascaded-session-restore-a-hidden-bonus
-set! browser.sessionstore.restore_on_demand=true
-"" save session every 5min, see http://lifehacker.com/5342636/
-set! browser.sessionstore.interval=300000
-"" http://www.stayupdate.com/firefox/increase-firefox-speed-and-decrease-firefox-memory-usage-20-tips/567
-set! nglayout.initialpaint.delay=0
-set! content.notify.interval=500000
-set! content.notify.ontimer=true
-set! content.switch.threshold=250000
-set! content.interrupt.parsing=true
-set! network.http.pipelining=true
-set! network.http.pipelining.maxrequests=16
-set! network.http.pipelining.ssl=true
-set! network.http.proxy.pipelining=true
-set! content.max.tokenizing.time=2250000
-set! content.notify.interval=750000
-set! content.notify.ontimer=true
-set! content.notify.backoffcount=5
-set! content.switch.threshold=750000
-set! network.proxy.share_proxy_settings=false
-set! network.proxy.http=127.0.0.1
-set! network.proxy.http_port=8087
-set! network.proxy.ftp=127.0.0.1
-set! network.proxy.ftp_port=8087
-set! network.proxy.ssl=127.0.0.1
-set! network.proxy.ssl_port=8087
-set! network.proxy.socks=127.0.0.1
-set! network.proxy.socks_port=8087
-
-"set! 
-"" disable addons compatibility check
-set! extensions.checkCompatibility.9.0=false
-set! extensions.checkCompatibility.10.0=false
-set! extensions.checkCompatibility.11.0=false
-set! extensions.checkCompatibility.12.0=false
-"" disable the install-dialog delay
-set! security.dialog_enable_delay=0
-if config.OS.isMacOSX
-set! font.name.monospace.x-western="Menlo"
-end
-if config.OS.isWindows
-set! font.name.monospace.zh-CN="Consolas"
-set! font.name.sans-serif.zh-CN="微软雅黑"
-set! font.name.serif.zh-CN="微软雅黑"
-end
 "" }}}
 
 "" {{{ Extension
@@ -506,4 +452,4 @@ if (file.exists() && file.isFile() && file.isReadable()) {
 EOF
 "" }}}
 
-" vim: set ft=vim fdm=marker:
+" vim: ft=pentadactyl fdm=marker:
