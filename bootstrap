@@ -122,6 +122,7 @@ set! font.name.sans-serif.zh-CN="微软雅黑"
 set! font.name.serif.zh-CN="微软雅黑"
 end
 "" }}}
+
 "" {{{ Extension
 "" adblock plus
 set! extensions.adblockplus.frameobjects=false

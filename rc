@@ -93,13 +93,16 @@ nmap -builtin <Leader>a :dialog addons<CR>
 nmap -builtin <Leader>R :rehash<CR>
 
 "" private mode
-nmap -builtin <Leader>p :set private!<CR>
+nmap -builtin <Leader>P :set private!<CR>
+
+"" open preferences dialog
+nmap -builtin <Leader>p :dialog preferences<CR>
 
 "" fullscreen
 nmap -builtin <Leader>F :set fullscreen!<CR>
 
 "" display download
-nmap -builtin <Leader>d :downloads<CR>
+nmap -builtin <Leader>d :dialog downloads<CR>
 
 "" about:config
 nmap -builtin <Leader>c :tabopen about:config<CR>
@@ -125,6 +128,8 @@ map -modes hints <C-b> -ex normal! <C-b>
 map -builtin <C-Down>    :set guioptions=CBnTsrb<CR>
 map -builtin <C-Up>      :set guioptions=Cnrsb<CR>
 
+imap -builtin <C-Down>    <Esc>:set guioptions=CBnTsrb<CR>
+imap -builtin <C-Up>      <Esc>:set guioptions=Cnrsb<CR>
 "" <C-Q> quit the brower, hack it to :help
 map -builtin <C-Q>	:help<CR>
 
@@ -158,7 +163,7 @@ set showtabline=always
 set hlfind
 
 "" complete search engine suguest
-set complete=bookmark,location,suggestion
+set complete=search,bookmark,location,file,suggestion
 
 "" allow popups popup
 set popups=tab,resized
