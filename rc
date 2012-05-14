@@ -18,10 +18,6 @@ nmap -builtin Y y
 nmap -builtin p P
 nmap -builtin P p
 
-"" swap f/F
-"nmap -builtin f F
-"nmap -builtin F f
-
 "" J/K move left/right
 "nmap -builtin J h
 "nmap -builtin K l
@@ -144,9 +140,9 @@ map -builtin <Leader>fp  :pintab!<CR>
 "" {{{ Option
 "" ]]/[[ turn next/previous page
 set nextpattern&
-set nextpattern^='[下后]一?[页张个篇章]','\bolder\s*posts\b'
+set nextpattern^='[下后]\s*一?\s*[页张个篇章頁]','\bolder\s*posts\b'
 set previouspattern&
-set previouspattern^='[上前]一?[页张个篇章]','\bnewer\s*posts\b'
+set previouspattern^='[上前]\s*一?\s*[页张个篇章頁]','\bnewer\s*posts\b'
 
 "" do not display right scrollbar and commandline
 "set guioptions+=n
@@ -166,7 +162,7 @@ set hlfind
 set complete=search,bookmark,location,file,suggestion
 
 "" allow popups popup
-set popups=tab,resized
+"set popups=tab,resized
 
 "" home row as hintkeys
 "set hintkeys=asdfg;lkjh
@@ -363,10 +359,6 @@ silent cd ~
 "" plugins
 set loadplugins='\.(css|js|penta)$'
 
-"" }}}
-
-"" {{{ Extension
-
 "" workaround for TabGroupie
 js <<EOF
 setTimeout(function(){
@@ -388,7 +380,7 @@ var switchOrOpen = function (url) {
     }
 };
 var fakeDomain = function (str) {
-    var m = str.match(/^(?:[A-Za-z0-9-]+\.)+([A-Za-z]+)$/);
+    var m = str.match(/^(?:[^.:\/ ]+\.)+([A-Za-z]+)$/);
     return (m && !m[1].match(/^(?:com|net|org|name|edu|gov|au|tw|cz|cn|us|me|info|co|jp|ly|gd|gl)$/));
 };
 overlay.overlayObject(dactyl, {
@@ -411,11 +403,11 @@ EOF
 
 "" custom hint
 js <<EOF
-var selectors = ["a.l", "a[href^='#!topic/']"];
+var selectors = ["a.l", "a[href^='#!topic/']", "div.links_main"];
 hints.addMode("g", "Follow specfic hint in new tab", function (elem) buffer.followLink(elem, dactyl.NEW_TAB), null, selectors);
 hints.addMode("G", "Follow specfic hint in a background tab", function (elem) buffer.followLink(elem, dactyl.NEW_BACKGROUND_TAB), null, selectors);
 EOF
-group -locations www.google.com,groups.google.com customHint
+group -locations www.google.com,groups.google.com,duckduckgo.com customHint
 nmap -builtin f ;g
 nmap -builtin F g;G
 group user
@@ -457,4 +449,4 @@ if (file.exists() && file.isFile() && file.isReadable()) {
 EOF
 "" }}}
 
-" vim: ft=pentadactyl fdm=marker:
+" vim: set ft=pentadactyl fdm=marker:
