@@ -126,6 +126,7 @@ map -builtin <C-Up>      :set guioptions=Cnrsb<CR>
 
 imap -builtin <C-Down>    <Esc>:set guioptions=CBnTsrb<CR>
 imap -builtin <C-Up>      <Esc>:set guioptions=Cnrsb<CR>
+
 "" <C-Q> quit the brower, hack it to :help
 map -builtin <C-Q>	:help<CR>
 
@@ -316,9 +317,6 @@ command bootstrap :runtime bootstrap
 "" }}}
 
 "" {{{ AutoCMD
-"" workaround for tabgroups manager causing P misbehave
-"nmap -builtin p :js dactyl.execute(":tabopen " + dactyl.clipboardRead())<CR>
-
 "" use https for some sites
 autocmd! PageLoad '^http://((reader|groups|docs|spreadsheets)\.google\.com|www\.google\.com/(search|reader))' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://(webcache.googleusercontent.com)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
@@ -344,6 +342,7 @@ colorscheme mybeta1
 "" {{{ Bookmarklet
 nmap -builtin <Leader>b :bml-
 nmap -builtin <Leader>s :bml-subscribe<CR>
+
 command bml-readable -description "Bookmarklet: Make webpage readable" open javascript:(function(){_readableOptions={'text_font':'Vollkorn','text_font_monospace':'quote(Courier%20New),%20Courier,%20monospace','text_font_header':'quote(Palatino%20Linotype),%20Palatino,%20quote(Book%20Antigua),%20Georgia,%20serif','text_size':'20px','text_line_height':'1.5','box_width':'35em','color_text':'#282828','color_background':'#E5DED6','color_links':'#EE4545','text_align':'normal','base':'blueprint','custom_css':''};if(document.getElementsByTagName('body').length>0);else{return;}if(window.$readable){if(window.$readable.bookmarkletTimer){return;}}else{window.$readable={};}window.$readable.bookmarkletTimer=true;window.$readable.options=_readableOptions;if(window.$readable.bookmarkletClicked){window.$readable.bookmarkletClicked();return;}_readableScript=document.createElement('script');_readableScript.setAttribute('src','http://readable-static.tastefulwords.com/target.js?rand='+encodeURIComponent(Math.random()));document.getElementsByTagName('body')[0].appendChild(_readableScript);})()
 command bml-page2rss -description "Bookmarklet: Turn any page to RSS" open javascript:(function(){if(!window.page2rss_bookmark_urlr)window.page2rss_bookmark_urlr=function(ur){if(ur.error)alert(ur.error);if(ur.page&&ur.page.page)location.href=ur.page.page};var%20r=document.getElementById('urlFormRequest');if(r)r.parentNode.removeChild(r);r=document.createElement('script');r.id='urlFormRequest';r.type='text/javascript';r.src='http://page2rss.com/api/page?url='+encodeURIComponent(location.href)+'&callback=page2rss_bookmark_urlr';document.body.appendChild(r);})();
 command bml-share -description "Bookmarklet: Google reader official bookmarklet" open javascript:var%20b=document.body;var%20GR________bookmarklet_domain='http://www.google.com';if(b&&!document.xmlVersion){void(z=document.createElement('script'));void(z.src='http://www.google.com/reader/ui/link-bookmarklet.js');void(b.appendChild(z));}else{}
@@ -358,13 +357,6 @@ silent cd ~
 
 "" plugins
 set loadplugins='\.(css|js|penta)$'
-
-"" workaround for TabGroupie
-js <<EOF
-setTimeout(function(){
-    plugins.tabgroupieTabGroupie.TabGroupie.init()
-}, 5000);
-EOF
 
 "" when follow link, switch to buffer if found or open it
 :js <<EOF
@@ -415,22 +407,6 @@ group user
 "" google docs viewer
 js <<EOF
 hints.addMode("d", "Open link using google docs", function (elem) dactyl.open("https://docs.google.com/viewer?url=" + encodeURIComponent(elem.href), dactyl.NEW_TAB));
-EOF
-
-"" display tabgroup title on statusline
-js <<EOF
-overlay.overlayObject(statusline, {
-    updateTabCount: function updateTabCount(delayed) {
-        let title;
-        tabs.getGroups( function ({ GroupItems }) {
-            activeGroup = GroupItems.getActiveGroupItem();
-            title = (activeGroup.getTitle() === "")?
-                "" + activeGroup.id : activeGroup.getTitle();
-        });
-        updateTabCount.superapply(this, arguments);
-        if (!delayed) this.widgets.tabcount.value = "(" + title + ")" + this.widgets.tabcount.value;
-    }
-});
 EOF
 
 "" source boostrap if modified

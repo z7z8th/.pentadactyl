@@ -105,6 +105,7 @@ set! network.proxy.ssl=127.0.0.1
 set! network.proxy.ssl_port=8087
 set! network.proxy.socks=127.0.0.1
 set! network.proxy.socks_port=8087
+set! network.proxy.no_proxies_on=localhost,127.0.0.1,.infomax.com.tw,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8
 
 "set! 
 "" disable addons compatibility check
