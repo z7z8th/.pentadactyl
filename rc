@@ -1,3 +1,5 @@
+set runtimepath=~/.pentadactyl,~/_pentadactyl,~/pentadactyl
+
 "" {{{ Mapping
 map , <Leader>
 
