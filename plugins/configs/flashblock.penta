@@ -1,0 +1,19 @@
+set fbwhitelist=http://v.youku.com/v_showMini/*
+set fbwhitelist+=douban.fm
+set fbwhitelist+=http*.google.com
+set fbwhitelist+=http*picnik.com
+set fbwhitelist+=pixlr.com
+set fbwhitelist+=infomax.com.tw
+set fbwhitelist+=su.ganji.com
+set fbwhitelist+=upload.renren.com
+set fbwhitelist+=drive.google.com
+set fbwhitelist+=github.com
+set fbwhitelist+=www.top100.cn
+set fbwhitelist+=g.top100.cn
+set fbwhitelist+=www.google.cn
+set fbwhitelist+=music.googleusercontent.cn
+set fbwhitelist+=player.pptv.vom
+set fbwhitelist+=player.pps.tv
+set fbwhitelist+=v.pps.tv
+set fbwhitelist+=www.pps.tv
+

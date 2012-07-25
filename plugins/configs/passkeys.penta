@@ -1,8 +1,8 @@
 group default -locations mail.google.com,www.douban.com,alphatown.com,groups.google.com,www.google.com/reader
 
 set passkeys+=mail.google.com:'cb/ukjxsym!#pnrRaAfFq<Esc>N][}{z.IU_-?evo+&`~T',gi,gs,gt,gd,ga,gc,*a,*n,*r,*u,*s,*t,gk,gl
-
 set passkeys+=www.douban.com:'<Left><Right>'
 set passkeys+=alphatown.com:'<Left><Right><Up><Douban>wasd'
-set passkeys+=groups.google.com:'ojJkKnNpPu<Space><PageDown><S-Space><PageUp><Up><Down><Home><End>hfAacs?',gl,gm,gs
+set passkeys+=groups.google.com:'ojJkKnNpPu<Space><PageDown><S-Space><PageUp><Up><Down><Home><End>fAacs?',gl,gm,gs
 set passkeys+=www.google.com/reader:'jknpo<CR>sSmvA12rNPXOu?<Space><S-Space>',gh,ga,gs,gt
+set passkeys+=docs.google.com/reader:'<C-c><C-v><C-x><C-z><C-y><C-D><C-a><C-S-a><C-o><C-F5><C-k><C-m><PageDown><PageUp><Home><End><C-b><C-i><c-u><C-,><C-.><C-g><C-S-g><C-A-g><C-S-Left><C-S-Right>'

@@ -4,6 +4,3 @@
 [submodule "plugins/dict"]
 	path = plugins/dict
 	url = https://github.com/grassofhust/dict.js.git
-[submodule "plugins/goo.gl"]
-	path = plugins/goo.gl
-	url = https://github.com/mitechie/goo.gl-dactyl.git
