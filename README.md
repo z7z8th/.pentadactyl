@@ -6,7 +6,7 @@ $ `ln -s .pentadactyl/rc ${HOME}/.pentadactylrc`
 ORIGINS
 =======
 
-* colors/feline.penta:                https://github.com/remiprev/pentadactyl-files/raw/master/colors/feline.penta
+* `colors/feline.penta:                https://github.com/remiprev/pentadactyl-files/raw/master/colors/feline.penta`
 * colors/mybeta1.penta:               http://www.firefox.net.cn/forum/viewtopic.php?t=34653
 * plugins/dactyl:                     http://dactyl.sourceforge.net/hg/file/tip/htdocs/plugins
 * plugins/dict:                       https://github.com/grassofhust/dict.js
