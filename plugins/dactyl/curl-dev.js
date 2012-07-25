@@ -47,7 +47,6 @@ hints.addMode('C', "Generate curl command for a form", function(elem) {
             postData != null && !elements.length ? [["-d", escape("")]] : [],
             [["-H", escape("Cookie: " + elem.ownerDocument.cookie)],
              ["-A", escape(navigator.userAgent)],
-             ["-JOL"],
              [escape(url)]]
         ).map(function(e) e.join(" ")).join(" \\\n\t")).join(" "), true);
 });
