@@ -75,6 +75,7 @@ map -builtin <Leader>gf  :tabopen http://douban.fm<CR>
 map -builtin <Leader>gq  :tabopen http://qzone.qq.com<CR>
 map -builtin <Leader>gx  :tabopen http://www.renren.com<CR>
 map -builtin <Leader>gg  :tabopen https://groups.google.com<CR>
+map -builtin <Leader>ge  :tabopen https://www.evernote.com/Home.action<CR>
 
 
 "" map for Ubiquity, not used now, it's not compatible with dactyl
