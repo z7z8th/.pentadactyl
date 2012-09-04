@@ -324,7 +324,7 @@ command bootstrap :runtime bootstrap
 autocmd! PageLoad '^http://(reader|groups?|docs?|drive|spreadsheets)\.google\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://www\.google\.com/(search|reader|url)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://webcache\.googleusercontent\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
-autocmd! PageLoad '^http://developer\.android\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+"autocmd! PageLoad '^http://developer\.android\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://.*\.?dropbox\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 
 
