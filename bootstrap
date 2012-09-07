@@ -69,11 +69,11 @@ if config.OS.isWindows
 end
 
 "" disable addons compatibility check
-js <<EOF
-var appVersion = prefs.get("extensions.lastAppVersion");
-prefs.set("extensions.checkCompatibility." + appVersion, false);
-prefs.set("extensions.checkCompatibility.nightly", false);
-EOF
+"js <<EOF
+"var appVersion = prefs.get("extensions.lastAppVersion");
+"prefs.set("extensions.checkCompatibility." + appVersion, false);
+"prefs.set("extensions.checkCompatibility.nightly", false);
+"EOF
 
 set! content.interrupt.parsing=true
 
@@ -100,9 +100,8 @@ set! network.proxy.ssl_port=8087
 set! network.proxy.socks=127.0.0.1
 set! network.proxy.socks_port=8087
 set! network.proxy.no_proxies_on=localhost,127.0.0.1,.infomax.com.tw,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8
+set! network.proxy.autoconfig_url=http://127.0.0.1:8086/goagent.pac
 
-"" disable addons compatibility check
-"set! extensions.checkCompatibility.12.0=false
 
 if config.OS.isMacOSX
 set! font.name.monospace.x-western="Menlo"
