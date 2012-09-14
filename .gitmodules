@@ -1,6 +1,3 @@
-[submodule "plugins/TabGroupie"]
-	path = plugins/TabGroupie
-	url = https://github.com/eri451/TabGroupie.git
 [submodule "plugins/dict"]
 	path = plugins/dict
 	url = https://github.com/grassofhust/dict.js.git
