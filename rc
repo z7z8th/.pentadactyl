@@ -84,6 +84,7 @@ map -builtin <Leader>ge  :tabopen https://www.evernote.com/Home.action<CR>
 "" change proxy
 nmap -builtin <Leader>g0 :set! network.proxy.type=0<CR>
 nmap -builtin <Leader>g1 :set! network.proxy.type=1<CR>
+nmap -builtin <Leader>g2 :set! network.proxy.type=2<CR>
 
 "" open addons manager
 nmap -builtin <Leader>a :dialog addons<CR>
