@@ -82,9 +82,9 @@ map -builtin <Leader>ge  :tabopen https://www.evernote.com/Home.action<CR>
 "map -builtin <Leader>u <A-Space>
 
 "" change proxy
-nmap -builtin <Leader>g0 :set! network.proxy.type=0<CR>
-nmap -builtin <Leader>g1 :set! network.proxy.type=1<CR>
-nmap -builtin <Leader>g2 :set! network.proxy.type=2<CR>
+nmap -builtin g0 :set! network.proxy.type=0<CR>
+nmap -builtin g1 :set! network.proxy.type=1<CR>
+nmap -builtin g2 :set! network.proxy.type=2<CR>
 
 "" open addons manager
 nmap -builtin <Leader>a :dialog addons<CR>
@@ -323,9 +323,9 @@ command bootstrap :runtime bootstrap
 "" {{{ AutoCMD
 "" use https for some sites
 autocmd! PageLoad '^http://(reader|groups?|docs?|drive|spreadsheets)\.google\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
-autocmd! PageLoad '^http://www\.google\.com/(search|reader|url)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://www\.google\.com/(url|search|reader|url)' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://webcache\.googleusercontent\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
-"autocmd! PageLoad '^http://developer\.android\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+autocmd! PageLoad '^http://developer\.android\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 autocmd! PageLoad '^http://.*\.?dropbox\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
 
 

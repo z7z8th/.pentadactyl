@@ -1,4 +1,4 @@
-set fbwhitelist=http://v.youku.com/v_showMini/*
+"set fbwhitelist=http://v.youku.com/v_showMini/
 set fbwhitelist+=douban.fm
 set fbwhitelist+=http*.google.com
 set fbwhitelist+=http*picnik.com

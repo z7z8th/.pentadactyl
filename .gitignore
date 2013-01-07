@@ -1,4 +1,6 @@
 *.swp
+*.un~
 *.dis
 /info
 *.orig
+

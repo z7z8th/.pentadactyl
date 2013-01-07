@@ -32,6 +32,8 @@ set! browser.tabs.insertRelatedAfterCurrent=true
 set! network.dns.disableIPv6=false
 
 set! browser.startup.homepage="http://www.google.com"
+" page=3 can restore my last session
+set! browser.startup.page=3
 set! browser.download.useDownloadDir=false
 set! browser.download.manager.showWhenStarting=false
 set! browser.download.manager.showAlertOnComplete=true
@@ -42,8 +44,9 @@ set! view_source.wrap_long_lines=true
 
 "" do not reload tabs when restarting firefox, see http://blog.zpao.com/post/1140456188/cascaded-session-restore-a-hidden-bonus
 set! browser.sessionstore.restore_on_demand=true
-"" save session every 5min, see http://lifehacker.com/5342636/
-set! browser.sessionstore.interval=300000
+set! browser.sessionstore.restore_pinned_tabs_on_demand=true
+" interval, in ms
+set! browser.sessionstore.interval=15000
 "" http://www.stayupdate.com/firefox/increase-firefox-speed-and-decrease-firefox-memory-usage-20-tips/567
 set! nglayout.initialpaint.delay=0
 
