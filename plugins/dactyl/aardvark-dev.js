@@ -21,161 +21,126 @@ On this notice these rights rely.
  * Original portions available under the terms of the MIT license.
  */
 
-/* use strict */
-XML.prettyPrinting = XML.ignoreWhitespace = false;
+"use strict";
 var INFO =
-<plugin name="aardvark" version="0.1"
-        href="http://dactyl.sf.net/pentadactyl/plugins#aardvark-plugin"
-        summary="Aardvark page editor"
-        xmlns={NS}>
-    <author>Rob Brown</author>
-    <author email="maglione.k@gmail.com">Kris Maglione</author>
-    <license>Some unnamed BSD variant</license>
-    <project name="Pentadactyl" min-version="1.0"/>
-    <p>
-        This plugin is a Pentadactyl port of the Aardvark Firefox plugin
-        and bookmarklet. The code is moderately horrendous, but it
-        generally works.
-    </p>
-    <item>
-        <tags>:aardvark</tags>
-        <spec><ex>:aardvark</ex></spec>
-        <description short="true">
-            <p>Start Aardvark mode.</p>
-        </description>
-    </item>
+["plugin", { name: "aardvark",
+             version: "0.1",
+             href: "http://dactyl.sf.net/pentadactyl/plugins#aardvark-plugin",
+             summary: "Aardvark page editor",
+             xmlns: "dactyl" },
+    ["author", { email: "maglione.k@gmail.com" },
+        "Kris Maglione"],
+    ["author", {}, "Rob Brown"],
+    ["license", {},
+        "Some unnamed BSD variant"],
+    ["project", { name: "Pentadactyl", "min-version": "1.0" }],
+    ["p", {},
+        "This plugin is a Pentadactyl port of the Aardvark Firefox add-on ",
+        "and bookmarklet. The code is moderately horrendous, but it ",
+        "generally works."],
+    ["item", {},
+        ["tags", {}, ":aardvark"],
+        ["spec", {}, ["ex", {}, ":aardvark"]],
+        ["description", { short: "true" },
+            ["p", {}, "Start Aardvark mode."]]],
 
-    <item>
-        <tags>A_b</tags>
-        <spec>b</spec>
-        <description short="true">
-            <p>Decolorize element?</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_b"],
+        ["spec", {}, "b"],
+        ["description", { short: "true" },
+            ["p", {}, "Decolorize element."]]],
 
-    <item>
-        <tags>A_c</tags>
-        <spec>c</spec>
-        <description short="true">
-            <p>Colorize element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_c"],
+        ["spec", {}, "c"],
+        ["description", { short: "true" },
+            ["p", {}, "Colorize element."]]],
 
-    <item>
-        <tags>A_d</tags>
-        <spec>d</spec>
-        <description short="true">
-            <p>Remove width-specifying styles.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_d"],
+        ["spec", {}, "d"],
+        ["description", { short: "true" },
+            ["p", {}, "Remove width-specifying styles."]]],
 
-    <item>
-        <tags>A_h</tags>
-        <spec>h</spec>
-        <description short="true">
-            <p>Show a list of available keys.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_h"],
+        ["spec", {}, "h"],
+        ["description", { short: "true" },
+            ["p", {}, "Show a list of available keys."]]],
 
-    <item>
-        <tags>A_i</tags>
-        <spec>i</spec>
-        <description short="true">
-            <p>Isolate element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_i"],
+        ["spec", {}, "i"],
+        ["description", { short: "true" },
+            ["p", {}, "Isolate element."]]],
 
-    <item>
-        <tags>A_j</tags>
-        <spec>j</spec>
-        <description short="true">
-            <p>Convert element to JavaScript source.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_j"],
+        ["spec", {}, "j"],
+        ["description", { short: "true" },
+            ["p", {}, "Convert element to JavaScript source."]]],
 
-    <item>
-        <tags>A_k</tags>
-        <spec>k</spec>
-        <description short="true">
-            <p>Kill an element using the R.I.P. plugin.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_k"],
+        ["spec", {}, "k"],
+        ["description", { short: "true" },
+            ["p", {}, "Kill an element using the R.I.P. add-on."]]],
 
-    <item>
-        <tags>A_n</tags>
-        <spec>n</spec>
-        <description short="true">
-            <p>Select a lower element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_n"],
+        ["spec", {}, "n"],
+        ["description", { short: "true" },
+            ["p", {}, "Select a lower element."]]],
 
-    <item>
-        <tags>A_p</tags>
-        <spec>p</spec>
-        <description short="true">
-            <p>Paste the last yanked element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_p"],
+        ["spec", {}, "p"],
+        ["description", { short: "true" },
+            ["p", {}, "Paste the last yanked element."]]],
 
-    <item>
-        <tags>A_r</tags>
-        <spec>r</spec>
-        <description short="true">
-            <p>Remove element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_r"],
+        ["spec", {}, "r"],
+        ["description", { short: "true" },
+            ["p", {}, "Remove element."]]],
 
-    <item>
-        <tags>A_s</tags>
-        <spec>s</spec>
-        <description short="true">
-            <p>Select the given element or the contents of the frontmost display box.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_s"],
+        ["spec", {}, "s"],
+        ["description", { short: "true" },
+            ["p", {}, "Select the given element or the contents of the frontmost display box."]]],
 
-    <item>
-        <tags>A_t</tags>
-        <spec>t</spec>
-        <description short="true">
-            <p>Thunk the element in a global variable.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_t"],
+        ["spec", {}, "t"],
+        ["description", { short: "true" },
+            ["p", {}, "Thunk the element in a global variable."]]],
 
-    <item>
-        <tags>A_u</tags>
-        <spec>u</spec>
-        <description short="true">
-            <p>Undo the last operation.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_u"],
+        ["spec", {}, "u"],
+        ["description", { short: "true" },
+            ["p", {}, "Undo the last operation."]]],
 
-    <item>
-        <tags>A_v</tags>
-        <spec>v</spec>
-        <description short="true">
-            <p>View element source.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_v"],
+        ["spec", {}, "v"],
+        ["description", { short: "true" },
+            ["p", {}, "View element source."]]],
 
-    <item>
-        <tags>A_w</tags>
-        <spec>w</spec>
-        <description short="true">
-            <p>Select a higher element.</p>
-        </description>
-    </item>
+    ["item", {},
+        ["tags", {}, "A_w"],
+        ["spec", {}, "w"],
+        ["description", { short: "true" },
+            ["p", {}, "Select a higher element."]]],
 
-    <item>
-        <tags>A_x</tags>
-        <spec>x</spec>
-        <description short="true">
-            <p>Show the element's XPath.</p>
-        </description>
-    </item>
-</plugin>;
+    ["item", {},
+        ["tags", {}, "A_x"],
+        ["spec", {}, "x"],
+        ["description", { short: "true" },
+            ["p", {}, "Show the element's XPath."]]]];
 
-highlight.loadCSS(String(<![CDATA[
-    // <css>
+highlight.loadCSS(literal(/*
     AardvarkDBox;;*  {
         padding: 0;
         border: 1px solid #000;
@@ -276,12 +241,9 @@ highlight.loadCSS(String(<![CDATA[
     AardvarkDewidthified;;*  {
         width: auto !important;
     }
+*/));
 
-    // </css>
-]]>));
-
-// <css>
-group.styles.add("aardvark", "*", <![CDATA[
+group.styles.add("aardvark", "*", literal(/*
         [dactyl|highlight~=AardvarkDBox] div.vsblock {
             border: 1px solid #ccc;
             border-right: 0;
@@ -331,15 +293,15 @@ group.styles.add("aardvark", "*", <![CDATA[
         [dactyl|highlight~=AardvarkDBox] a:hover {
 	    color: #00f;
         }
-    ]]>); // </css>
+    */));
 
 let images = {
-    close: <![CDATA[data:image/gif;base64,
+    close: literal(/*data:image/gif;base64,
         R0lGODlhEQARAMMPANuywOyNo+wnUfEENPN1kfFLbre0u/78/P7S28ZWcIdsdaJIXolVY7IyTpKS
         mP///yH5BAEAAA8ALAAAAAARABEAAARw8MkJQAAz5yCGHwKhTcVnglhWDqsnlIIxBV5wEC6CdMnU
         FYcgQYAIIjwywIcQbB52HsVDuXRCPQsD1eXEfbJbovP2Ycg64idTGJV4bdB1qeHweYbLlUImAXRO
         ZXUaCYANCoIjBgoLCwyHfCMTBpOREQA7
-    ]]>,
+    */)
 };
 
 for (let k in images)
@@ -353,8 +315,6 @@ function nodeName(node) {
 
 var AardvarkDBox = Class("AardvarkDBox", {
     init: function (aardvark, params) {
-        XML.ignoreWhitespace = XML.prettyPrinting = false;
-
         if (!("dragger" in params))
             params.dragger = true;
 
@@ -369,37 +329,40 @@ var AardvarkDBox = Class("AardvarkDBox", {
         dims.height -= 15;
         this.dims = dims;
 
-        let outerDiv = <div key="outerContainer" highlight="AardvarkDBox"
-            style={"position: absolute; z-index: 100000;" +
-                   "top: " + dims.scrollY + "px;" +
-                   "left: " + dims.scrollX + "px;" +
-                   "max-width: " + (dims.width - 20) + "px;" +
-                   "max-height: " + (dims.height - 20) + "px;"}
-            id={"aardvarkdbox-" + aardvark.dBoxId}>
-            { !params.dragger ? "" :
-            <div command="drag"
-                 key="dragBar" highlight="AardvarkDragger">
-                <img src={images.close}
-                     command="kill"
-                     highlight="AardvarkClose"
-                     alt="close" />
-                {!params.selectLink ? <></> :
-                    <a highlight="AardvarkSelect" command="select">select all</a>}
-                {params.title || ""}
-            </div> }
-            <div key="innerContainer" highlight="AardvarkInner"
-                 style={"overflow: " + (params.hideScrollbar ? "hidden" : "auto")}>
-                {content || ""}
-            </div>
-        </div>;
-        outerDiv = DOM.fromXML(outerDiv, aardvark.doc, this);
+        let style = "position: absolute; z-index: 100000;" +
+                    "top: " + dims.scrollY + "px;" +
+                    "left: " + dims.scrollX + "px;" +
+                    "max-width: " + (dims.width - 20) + "px;" +
+                    "max-height: " + (dims.height - 20) + "px;"
+
+        let outerDiv =
+            ["div", { key: "outerContainer",
+                      highlight: "AardvarkDBox",
+                      style: style,
+                      id: "aardvarkdbox-" + aardvark.dBoxId },
+                !params.dragger ? [] :
+                ["div", { command: "drag", key: "dragBar",
+                          highlight: "AardvarkDragger" },
+                    ["img", { src: images.close,
+                              command: "kill",
+                              highlight: "AardvarkClose",
+                              alt: "close" }],
+                    !params.selectLink ? [] :
+                        ["a", { highlight: "AardvarkSelect", command: "select" },
+                            "select all"],
+                    params.title || ""],
+                ["div", { key: "innerContainer", highlight: "AardvarkInner",
+                          style: "overflow: " + (params.hideScrollbar ? "hidden" : "auto") },
+                    content || ""]];
+
+        outerDiv = DOM.fromJSON(outerDiv, aardvark.doc, this);
         outerDiv.isAardvark = true;
         outerDiv.dbox = this;
         DOM(outerDiv).mousedown(this.closure.onMouseDown)
                      .appendTo(aardvark.container);
 
         if (params.data)
-            DOM(this.innerContainer).html(params.data);
+            DOM(this.innerContainer).empty().append(params.data);
 
         aardvark.dBoxId++;
         return this;
@@ -482,7 +445,8 @@ var Aardvark = Class("Aardvark", {
         this.window = window;
         this.doc = window.document;
 
-        this.top = DOM(<div highlight="hints"/>, this.doc).appendTo(this.doc.body);
+        this.top = DOM(["div", { highlight: "hints" }], this.doc)
+                        .appendTo(this.doc.body);
         this.top.style.height;
         this.top[0].isAardvark = true;
 
@@ -620,13 +584,13 @@ var Aardvark = Class("Aardvark", {
                 let src = this.undoStack.pop().elem;
 
                 if (src.localName == "tr" && target.localName != "tr") {
-                    var t = DOM(<table><tbody/></table>, this.doc)[0];
+                    var t = DOM(["table", {}, ["tbody"]], this.doc)[0];
                     t.firstChild.appendChild(src);
                     DOM(src).show();
                     src = t;
                 }
                 else if (src.localName == "td" && target.localName != "td")
-                    src = DOM(<div/>, this.doc).append(DOM(src).contents()).append(src)[0];
+                    src = DOM(["div"], this.doc).append(DOM(src).contents()).append(src)[0];
                 else {
                     src.parentNode.removeChild(src);
                     DOM(src).show();
@@ -674,9 +638,9 @@ var Aardvark = Class("Aardvark", {
 
             if (clone.localName == "tr" || clone.localName == "td") {
                 if (clone.localName == "td")
-                    clone = DOM(<tr/>, this.doc).append(clone)[0];
+                    clone = DOM(["tr"], this.doc).append(clone)[0];
 
-                t = DOM(<table><tbody/></table>, this.doc)[0];
+                t = DOM(["table", {}, ["tbody"]], this.doc)[0];
                 t.firstChild.appendChild(clone);
                 clone = t;
             }
@@ -740,9 +704,7 @@ var Aardvark = Class("Aardvark", {
     },
 
     getOuterHtmlFormatted: function getOuterHtmlFormatted(node, indent) {
-        XML.ignoreWhitespace = XML.prettyPrinting = false;
-
-        var res = <></>;
+        var res = [];
         switch (node.nodeType) {
         case Node.ELEMENT_NODE:
             if (node.style.display == "none")
@@ -753,53 +715,71 @@ var Aardvark = Class("Aardvark", {
             var isTbody = node.localName == "tbody" && node.attributes.length == 0;
             if (isTbody) {
                 for (let node in array.iterValues(node.childNodes))
-                    res += this.getOuterHtmlFormatted(node, indent);
+                    res.push(this.getOuterHtmlFormatted(node, indent));
             }
             else {
-                let inner = <>&lt;<span class="tag">{nodeName(node)}</span></>;
+                let inner = ["", "<",
+                             ["span", { class: "tag" }, nodeName(node)]];
                 Array.forEach(node.attributes, function (attr) {
                     if (attr.value != null) {
-                        let value = <span class="pval">{attr.value}</span>;
+                        let value = ["span", { class: "pval" }, attr.value];
                         if (attr.localName == "style")
                             value = template.map(Styles.propertyIter(value),
                                 function ({ name, value })
-                                <><span class="aname">{name}</span>: <span class="aval">{value}</span>;</>,
-                                <> </>);
+                                    [["span", { class: "aname" }, name],
+                                     ": ",
+                                     ["span", { class: "aval" }, value],
+                                     ";"],
+                                " ");
 
-                        inner += <> <span class="pname">{nodeName(attr)}</span>="{value}"</>;
+                        inner.push(" ",
+                                   ["span", { class: "pname" }, nodeName(attr)],
+                                   '="',
+                                   value,
+                                   '"');
                     }
                 }, this)
 
                 if (isLeaf)
-                    res += res += <div class="vsindent">{inner}/></div>;
+                    res.push(["div", { class: "vsindent" },
+                                inner,
+                                "/>"]);
                 else {
-                    inner = <div class="vsline">{inner}></div>;
+                    inner = [["div", { class: "vsline" },
+                                inner]];
 
                     for (let node in array.iterValues(node.childNodes))
-                        inner += this.getOuterHtmlFormatted(node, indent + 1);
+                        inner.push(this.getOuterHtmlFormatted(node, indent + 1));
 
-                    inner += <div class="vsline">&lt;/<span class="tag">{nodeName(node)}</span>></div>;
+                    res.push(["div", { class: "vsline" },
+                                "</",
+                                ["span", { class: "tag" },
+                                    nodeName(node)],
+                                ">"]);
 
                     if (indent > 0)
-                        res += <div class="vsblock">{inner}</div>;
+                        res.push(["div", { class: "vsblock" }, inner]);
                     else
-                        res += inner;
+                        res.push(inner);
                 }
             }
             break;
         case Node.TEXT_NODE:
             var v = DOM.escapeHTML(node.nodeValue).trim();
             if (v)
-                res += <div class="vsindent">{v}</div>;
+                res.push(["div", { class: "vsindent" },
+                            v]);
             break;
         case Node.CDATA_SECTION_NODE:
-            res += <div class="vsindent">{"<![CDATA[" + node.nodeValue}]]></div>;
+            res.push(["div", { class: "vsindent" },
+                        "<![CDATA[" + node.nodeValue + "]]>"]);
             break;
         case Node.ENTITY_REFERENCE_NODE:
-            res += <>&amp;{nodeName(node)}<br/></>;
+            res.push(["", "&", nodeName(node)], ["br"]);
             break;
         case Node.COMMENT_NODE:
-            res += <div class="vsindent">{"<!--" + node.nodeValue}--></div>;
+            res.push(["div", { class: "vsindent" },
+                        "<!--" + node.nodeValue + "-->"]);
             break;
         }
         return res;
@@ -809,9 +789,10 @@ var Aardvark = Class("Aardvark", {
     },
 
     domJavascript: function domJavascript(node, indent) {
-        XML.ignoreWhitespace = XML.prettyPrinting = false;
-
-        function FmtString(str, color) <>"<span style={"color:" + (color || "#00b") + "; font-weight: bold"}>{util.escapeString(str, "")}</span>"</>
+        function FmtString(str, color) ["", '"',
+                                        ["span", { style: "color:" + (color || "#00b") + "; font-weight: bold" },
+                                            util.escapeString(str, "")],
+                                        '"'];
 
         let self = this;
         var indentStr = "";
@@ -825,13 +806,14 @@ var Aardvark = Class("Aardvark", {
 
             var isLeaf = node.childNodes.length == 0
                       && this.leafElems[node.localName];
-            var children = <></>;
+            var children = [];
             var numChildren = 0;
             if (!isLeaf) {
                 numChildren = node.childNodes.length;
                 children = template.map(node.childNodes,
-                    function(node) <>{indentStr}  {self.domJavascript(node, indent + 1)}</>,
-                    <>,<br/></>);
+                    function(node) ["", indentStr, "  ",
+                                    self.domJavascript(node, indent + 1)],
+                    ["", ",", ["br"]]);
             }
 
             var properties = [];
@@ -841,38 +823,40 @@ var Aardvark = Class("Aardvark", {
                     switch (nodeName) {
                     case "style":
                         for (let { name, value } in Styles.propertyIter(value))
-                            styles.push(<>{FmtString(util.camelCase(name), "#060")}:</> +
-                                        <>{FmtString(value.trim(), "#008")}</>);
+                            styles.push(["", FmtString(util.camelCase(name), "#060"), ":",
+                                             FmtString(value.trim(), "#008")]);
                         break;
                     default:
                         nodeName = this.camelCaseProps[n] || nodeName;
 
-                        properties.push(<>{FmtString(nodeName, "#080")}:{FmtString(value, "#00b")}</>);
+                        properties.push(["", FmtString(nodeName, "#080"), ":",
+                                             FmtString(value, "#00b")]);
                         break;
                     }
                 }
             }, this);
 
             if (styles.length) {
-                styles = template.map(styles, util.identity, <>, </>);
-                properties.unshift(<>{FmtString("style", "080")}:{"{"}{styles}{"}"}</>);
+                styles = template.map(styles, util.identity, ", ");
+                properties.unshift(["", FmtString("style", "080"), ":",
+                                    "{", styles, "}"]);
             }
 
             let numProps = properties.length;
-            properties = template.map(properties, util.identity, <>, </>);
-            properties = <>{"{"}{properties}{"}"}</>;
+            properties = template.map(properties, util.identity, ", ");
+            properties = ["", "{", properties, "}"];
 
-            let xml = <>[{FmtString(nodeName(node), "red")}</>;
+            let xml = ["", "[", FmtString(nodeName(node), "red")];
             if (numChildren) {
                 if (numProps)
-                    return <>{xml}, {properties},&#x0a;{children}]</>;
+                    return ["", xml, ", ", properties, ",\u000a;", children, "]"];
                 else
-                    return <>{xml},&#x0a;{children}]</>;
+                    return ["", xml, ",'\u000a", children, "]"];
             }
             else if (numProps)
-                return <>{xml}, {properties}]</>;
+                return ["", xml, ", ", properties, "]"];
             else
-                return <>{xml}]</>;
+                return ["", xml, "]"];
             break;
         case Node.TEXT_NODE:
             var n = node.nodeValue;
@@ -881,7 +865,7 @@ var Aardvark = Class("Aardvark", {
 
             n = n.trim();
             if (n.length > 0)
-                return <>"<b>{n}</b>"</>;
+                return ["", '"', ["b", {}, n], '"'];
             break;
         case Node.CDATA_SECTION_NODE:
         case Node.ENTITY_REFERENCE_NODE:
@@ -895,7 +879,11 @@ var Aardvark = Class("Aardvark", {
         var dbox = AardvarkDBox(this, {
             selectLink: true,
             title: this.strings.javascriptDomCode,
-            data: <><pre style="margin:0; width: 97%">{this.domJavascript(elem, 0)}</pre><br/></>
+            data: [
+                ["pre", { style: "margin:0; width: 97%" },
+                    this.domJavascript(elem, 0)],
+                ["br"]
+            ]
         });
         dbox.show();
         return true;
@@ -916,13 +904,15 @@ var Aardvark = Class("Aardvark", {
             return;
         }
 
-        var s = <table style="margin:5px 10px 0 10px;"/>;
+        var s = ["table", { style: "margin:5px 10px 0 10px;" }];
         for (let map in mappings.iterate(modes.AARDVARK))
             if (map.name != "<Esc>")
-                s.* += <tr>
-                        <td style="padding: 3px 7px; border: 1px solid black; font-family: courier; font-weight: bold; background-color: #fff">{map.name}</td>
-                        <td style="padding: 3px 7px; font-size: .9em; text-align: left;">{map.description}</td>
-                </tr>;
+                s.push(["tr", {},
+                    ["td", { style: "padding: 3px 7px; border: 1px solid black; font-family: courier; font-weight: bold; background-color: #fff" },
+                        map.name],
+                    ["td", { style: "padding: 3px 7px; font-size: .9em; text-align: left;" },
+                        map.description]
+                ]);
 
         var dbox = AardvarkDBox(this, {
             bgColor: "#fff2db",
@@ -950,12 +940,11 @@ var Aardvark = Class("Aardvark", {
         description: 'Utility for cleaning up a page prior to printing, and for analyzing a page.',
         help: 'toggle &help',
         javascriptDomCode: 'Javascript DOM code',
-        ripHelp: <center>
-            If you install the excellent
-            <a href="http://addons.mozilla.org/firefox/521/" target="_blank">R.I.P.</a>,<br/>
-            (Remove It Permanently), the K command will<br/>
-            permanently remove items from a page.
-        </center>,
+        ripHelp: ["center", {},
+            "If you install the excellent ",
+            "", ["a", { href: "http://addons.mozilla.org/addon/521/", target: "_blank" }, "R.I.P."], ["br"],
+            "(Remove It Permanently), the K command will", ["br"],
+            "permanently remove items from a page."],
         undo: 'undo',
         viewHtmlSource: 'View HTML source',
         viewSource: 'view source',
@@ -968,15 +957,15 @@ var Aardvark = Class("Aardvark", {
         this.borderElems = {};
 
         for each (let side in ["top", "bottom", "left", "right"]) {
-            this.borderElems[side] = DOM(<div style={"display: none; border-width: 0; border-" + side + "-width: 2px;"}
-                                              highlight="AardvarkBorder"/>,
+            this.borderElems[side] = DOM(["div", { style: "display: none; border-width: 0; border-" + side + "-width: 2px;",
+                                                   highlight: "AardvarkBorder" }],
                                          this.doc).appendTo(this.container);
         }
 
-        this.labelElem = DOM(<div style="display: none;" highlight="AardvarkLabel"/>, this.doc)
-                           .appendTo(this.container)[0];
+        this.labelElem = DOM(["div", { style: "display: none;", highlight: "AardvarkLabel" }],
+                             this.doc).appendTo(this.container)[0];
 
-        this.keyboxElem = DOM(<div style="display: none;" highlight="AardvarkKeybox"/>,
+        this.keyboxElem = DOM(["div", { style: "display: none;", highlight: "AardvarkKeybox" }],
                               this.doc).appendTo(this.container);
     },
 
@@ -1012,7 +1001,7 @@ var Aardvark = Class("Aardvark", {
         });
 
         y += elem.offsetHeight + 2;
-        DOM(this.labelElem).html(label).show();
+        DOM(this.labelElem).empty().append(label).show();
 
         this.labelElem.style.borderTopWidth = "";
         this.labelElem.style.borderTopLeftRadius = "";
@@ -1052,9 +1041,9 @@ var Aardvark = Class("Aardvark", {
         if (this.keyboxElem == null)
             return;
 
-        this.keyboxElem.html(
+        this.keyboxElem.empty().append(
             template.highlightRegexp(key.aardvarkSpec || key.description, /&(.)/g,
-                function (m, m1) <b style="font-size: 2em">{m1}</b>));
+                function (m, m1) ["b", { style: "font-size: 2em" }, m1]));
 
         var dims = this.getWindowDimensions();
         var y = Math.max(0, dims.scrollY + this.mousePosY + 10);
@@ -1075,12 +1064,13 @@ var Aardvark = Class("Aardvark", {
 
 //-------------------------------------------------
     makeElementLabelString: function makeElementLabelString(elem) {
-        var s = <b style="color:#000">{nodeName(elem)}</b>;
+        var s = [["b", { style: "color:#000" }, nodeName(elem)]];
         if (elem.id != "")
-            s += <>, id: {elem.id}</>;
+            s.push(["b", {}, "#"], ["i", {}, elem.id]);
 
         if (elem.className != "")
-            s += <>, class: {elem.className}</>;
+            s.push(template.map(Array.slice(elem.classList),
+                                function (clas) [["b", {}, "."], ["i", {}, clas]]));
         return s;
     },
 

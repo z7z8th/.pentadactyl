@@ -12,7 +12,7 @@ silent bmark -tags searchengine -title='Debian File Search' http://packages.debi
 silent bmark -tags searchengine -title='Mtime Movie Search' http://search.mtime.com/search/?%s -keyword m
 silent bmark -tags searchengine -title='Douban Movie Search' http://movie.douban.com/subject_search?search_text=%s&cat=1002 -keyword dm
 silent bmark -tags searchengine -title='Shooter Subtitle Search' http://shooter.cn/search/%s -keyword s
-silent bmark -tags searchengine -title='Bing Dict' http://dict.bing.com.cn/?FORM=BNGCN#%s -keyword bd
+silent bmark -tags searchengine -title='Bing Dict' http://cn.bing.com/dict/search?q=%s -keyword bd
 silent bmark -tags searchengine -title='Bing Search' http://cn.bing.com/search?q=%s -keyword b
 
 silent bmark -tags searchengine -title='KTXP Torrent Search' http://bt.ktxp.com/search.php?keyword=%s -keyword k
@@ -104,7 +104,6 @@ set! network.proxy.socks=127.0.0.1
 set! network.proxy.socks_port=8087
 set! network.proxy.no_proxies_on=localhost,127.0.0.1,.infomax.com.tw,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8
 set! network.proxy.autoconfig_url=http://127.0.0.1:8086/goagent.pac
-
 
 if config.OS.isMacOSX
 set! font.name.monospace.x-western="Menlo"

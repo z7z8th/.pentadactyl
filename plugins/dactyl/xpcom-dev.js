@@ -1,94 +1,89 @@
-/* use strict */
-XML.ignoreWhitespace = false;
-XML.prettyPrinting   = false;
+"use strict";
 var INFO =
-<plugin name="xpcom" version="0.3"
-        href="http://dactyl.sf.net/pentadactyl/plugins#xpcom-plugin"
-        summary="XPCOM development"
-        xmlns={NS}>
-    <author email="maglione.k@gmail.com">Kris Maglione</author>
-    <license href="http://opensource.org/licenses/mit-license.php">MIT</license>
-    <project name="Pentadactyl" min-version="1.0"/>
-    <p>
-        This plugin aids in the development of XPCOM-related code, and
-        in the exploration of extant XPCOM interfaces, classes, and
-        instances. All of the functions herein are exported to the
-        <em>userContext</em> and are thus available from the
-        <ex>:javascript</ex> command. Each of these functions provides
-        JavaScript completion for its arguments.
-    </p>
-    <item>
-        <tags>xpwrapper</tags>
-        <spec>xpwrapper(<a>instance</a>, <oa>interface</oa>)</spec>
-        <spec>xpwrapper(<a>string</a>)</spec>
-        <description>
-            <p>
-                This function is the core of the plugin. It wraps XPCOM
-                objects so that their properties are more easily
-                accessible. When <a>instance</a> alone is given, the
-                result contains one property for each interface that
-                <a>instance</a> implements. Each of those properties, in
-                turn, returns <a>instance</a> wrapped in a call to
+["plugin", { name: "xpcom",
+              version: "0.3",
+              href: "http://dactyl.sf.net/pentadactyl/plugins#xpcom-plugin",
+              summary: "XPCOM development",
+              xmlns: "dactyl" },
+    ["author", { email: "maglione.k@gmail.com" },
+        "Kris Maglione"],
+    ["license", { href: "http://opensource.org/licenses/mit-license.php" },
+        "MIT"],
+    ["project", { name: "Pentadactyl", "min-version": "1.0" }],
 
-                <code>xpwrapper(<a>instance</a>, <a>interface</a>),</code>
+    ["p", {},
+        "This plugin aids in the development of XPCOM-related code, and ",
+        "in the exploration of extant XPCOM interfaces, classes, and ",
+        "instances. All of the functions herein are exported to the ",
+        "<em>userContext</em> and are thus available from the ",
+        "<ex>:javascript</ex> command. Each of these functions provides ",
+        "JavaScript completion for its arguments."],
 
-                which contains only the properties of <a>instance</a>
-                specified in <a>interface</a>. Additionally, the
-                one-argument form contains the properties <em>all</em>
-                and <em>wrappedJSObject</em>, the former of which
-                returns an object that implements all interfaces
-                provided by the instance, and the latter of which, when
-                applicable, is the raw JavaScript object that backs the
-                XPCOM instance.
-            </p>
-            <p>
-                When <a>string</a> is provided rather than an XPCOM
-                instance, the returned object contains all of the
-                properties specified by the interface with the given
-                name, each with an <hl key="Object">undefined</hl> value.
-            </p>
-        </description>
-    </item>
-    <item>
-        <tags>xpclasses</tags>
-        <spec>xpclasses(<a>class</a>)</spec>
-        <spec>xpclasses(<a>string</a>)</spec>
-        <description>
-            <p>
-                When given an XPCOM instance as its first argument,
-                the result is exactly the same as the one argument form
-                of <em>xpwrapper</em>. When given a string, returns the
-                <em>xpwrapper</em> for an instance of the provided
-                XPCOM contract ID.
-            </p>
-        </description>
-    </item>
-    <item>
-        <tags>xpproviders</tags>
-        <strut/>
-        <spec>xpproviders</spec>
-        <description>
-            <p>
-                Presents, for each installed interface, a property for
-                each class that provides that interface. The properties
-                on both levels are lazily instantiated, so iterating
-                over the values of either level is not a good idea.
-            </p>
-            <example><ex>:js xpproviders.nsILocalFile["<k name="Tab" link="c_&lt;Tab>"/></ex></example>
-        </description>
-    </item>
-    <item>
-        <tags>xpservices</tags>
-        <spec>xpservices(<a>class</a>)</spec>
-        <spec>xpservices[<a>class</a>]</spec>
-        <description>
-            <p>
-                An object containing an <t>xpwrapper</t> wrapped service for
-                each contract ID in <em>Components.classes</em>.
-            </p>
-        </description>
-    </item>
-</plugin>;
+    ["item", {},
+        ["tags", {}, "xpwrapper"],
+        ["spec", {}, "xpwrapper(<a>instance</a>, <oa>interface</oa>)"],
+        ["spec", {}, "xpwrapper(<a>string</a>)"],
+        ["description", {},
+            ["p", {},
+                "This function is the core of the plugin. It wraps XPCOM ",
+                "objects so that their properties are more easily ",
+                "accessible. When ", ["a", {}, "instance"], " alone is given, the ",
+                "result contains one property for each interface that ",
+                ["a", {}, "instance"], " implements. Each of those properties, in ",
+                "turn, returns ", ["a", {}, "instance"], " wrapped in a call to ",
+
+                ["code", {}, "xpwrapper(", ["a", {}, "instance"], ", ", ["a", {}, "interface"], "),"],
+
+                "which contains only the properties of ", ["a", {}, "instance"], " ",
+                "specified in ", ["a", {}, "interface"], ". Additionally, the ",
+                "one-argument form contains the properties ", ["em", {}, "all"], "" ,
+                "and ", ["em", {}, "wrappedJSObject"], ", the former of which ",
+                "returns an object that implements all interfaces ",
+                "provided by the instance, and the latter of which, when ",
+                "applicable, is the raw JavaScript object that backs the ",
+                "XPCOM instance."],
+
+            ["p", {},
+                "When ", ["a", {}, "string"], " is provided rather than an XPCOM ",
+                "instance, the returned object contains all of the ",
+                "properties specified by the interface with the given ",
+                "name, each with an ", ["hl", { key: "Object" }, "undefined"], " value."]]],
+
+    ["item", {},
+        ["tags", {}, "xpclasses"],
+        ["spec", {}, "xpclasses(", ["a", {}, "class"], ")"],
+        ["spec", {}, "xpclasses(", ["a", {}, "string"], ")"],
+        ["description", {},
+            ["p", {},
+                "When given an XPCOM instance as its first argument, ",
+                "the result is exactly the same as the one argument form ",
+                "of ", ["em", {}, "xpwrapper"], ". When given a string, returns the ",
+                "", ["em", {}, "xpwrapper"], " for an instance of the provided ",
+                "XPCOM contract ID."]]],
+
+    ["item", {},
+        ["tags", {}, "xpproviders"],
+        ["strut"],
+        ["spec", {}, "xpproviders"],
+        ["description", {},
+            ["p", {},
+                "Presents, for each installed interface, a property for ",
+                "each class that provides that interface. The properties ",
+                "on both levels are lazily instantiated, so iterating ",
+                "over the values of either level is not a good idea."],
+
+            ["example", {},
+                ["ex", {}, ':js xpproviders.nsILocalFile["',
+                    ["k", { name: "Tab", link: "c_<Tab>" }]]]]],
+
+    ["item", {},
+        ["tags", {}, "xpservices"],
+        ["spec", {}, "xpservices(", ["a", {}, "class"], ")"],
+        ["spec", {}, "xpservices[", ["a", {}, "class"], "]"],
+        ["description", {},
+            ["p", {},
+                "An object containing an ", ["t", {}, "xpwrapper"], " wrapped service for ",
+                "each contract ID in ", ["em", {}, "Components.classes"], "."]]]];
 
 userContext.xpwrapper = function xpwrapper(obj, iface) {
     let res = {};
